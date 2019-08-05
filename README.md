@@ -23,6 +23,12 @@ describe('exported api of wdgtlb', () => {
     expect(wdgtlb.addTwo(3)).toBe(5);
   });
 });
+$ cat package.json
+(... omitted ...)
+   "scripts": {
+     "test": "jest"
+   },
+(... omitted ...)
 $ npx jest
  FAIL  ./index.spec.js
   ● Test suite failed to run
@@ -77,8 +83,50 @@ cz-cli@4.0.3, cz-conventional-changelog@3.0.2
 [master 8a371f4] feat(index.js): create index.js with add function
  3 files changed, 2057 insertions(+)
  create mode 100644 index.js
+ create mode 100644 index.spec.js 
  create mode 100644 package-lock.json
  create mode 100644 package.json
 $ git push origin master
 ```
 
+Generate a changelog.
+```
+$ npm i --save standard-changelog
+$ npx standard-changelog --first-release
+✔ created CHANGELOG.md
+✔ output changes to CHANGELOG.md
+$ git add
+$ git cz
+(... omit lines ...)
+[master cb021da] feat(changelog.md): auto-generate initial changelog
+ 3 files changed, 850 insertions(+), 107 deletions(-)
+ create mode 100644 CHANGELOG.md
+```
+
+Automatically reformat and lint the code for staged files when trying to commit.
+```
+$ npm i --save-dev husky lint-staged standard
+# add husky, lint-staged configuration to package.json
+$ cat package.json
+(... omitted ...)
+   "scripts": {
+     "test": "jest",
+     "lint": "standard --fix"
+   },
+   "standard": {
+     "globals": [ "jest", "describe", "test", "expects" ]
+   },
+   "husky": {
+     "hooks": {
+       "pre-commit": "lint-staged",
+       "post-commit": "git update-index --again"
+     }
+   },
+   "lint-staged": {
+     "*.js": ["standard --fix", "git add"]
+   }
+(... omitted ...)
+# add a couple blank lines to index.js and index.spec.js
+$ git add index.js index.spec.js
+$ git cz
+```
