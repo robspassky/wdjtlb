@@ -33,6 +33,9 @@
   "dependencies": {
     "standard-changelog": "^2.0.13"
   },
+  "standard": {
+    "globals": [ "jest", "describe", "test", "expect" ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

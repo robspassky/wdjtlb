@@ -1,4 +1,3 @@
-/* global describe, test, expect */
 const wdjtlb = require('./index')
 
 describe('exported api of wdjtlb', () => {
