@@ -4,6 +4,7 @@
   "description": "The cool, new way to handle your widgets! wdjtlb today!",
   "main": "index.js",
   "scripts": {
+    "docs": "jsdoc src -r -d docs -R ./README.md",
     "lint": "standard --fix",
     "test": "jest --coverage"
   },
