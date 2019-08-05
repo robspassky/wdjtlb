@@ -1,1 +1,2 @@
-export function foo(a) { return a + 2; }
+function addTwo(a) { return a + 2; }
+module.exports = { addTwo };

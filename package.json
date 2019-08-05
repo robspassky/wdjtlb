@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/robspassky/wdjtlb#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2"
+    "cz-conventional-changelog": "^3.0.2",
+    "jest": "^24.8.0"
   },
   "config": {
     "commitizen": {
