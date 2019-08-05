@@ -4,7 +4,8 @@
   "description": "The cool, new way to handle your widgets! wdjtlb today!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard --fix",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,10 @@
   "homepage": "https://github.com/robspassky/wdjtlb#readme",
   "devDependencies": {
     "cz-conventional-changelog": "^3.0.2",
-    "jest": "^24.8.0"
+    "husky": "^3.0.2",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.1",
+    "standard": "^13.1.0"
   },
   "config": {
     "commitizen": {
@@ -28,5 +32,14 @@
   },
   "dependencies": {
     "standard-changelog": "^2.0.13"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.js": ["standard --fix", "git add"]
   }
 }
