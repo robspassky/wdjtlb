@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docs": "jsdoc src -r -d docs -R ./README.md",
+    "changelog": "standard-changelog",
     "lint": "standard --fix",
     "test": "jest --coverage"
   },
